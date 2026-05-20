@@ -1,14 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Igor — le tissage">
-  <!-- « Le tissage » : quatre bandes entrelacées — le commun se tisse, ne s'érige pas. -->
-  <g fill="currentColor">
-    <!-- bandes verticales -->
-    <rect x="22" y="12" width="16" height="76" rx="3"/>
-    <rect x="62" y="12" width="16" height="76" rx="3"/>
-    <!-- bandes horizontales (passent par-dessus les verticales) -->
-    <rect x="12" y="22" width="76" height="16" rx="3"/>
-    <rect x="12" y="62" width="76" height="16" rx="3"/>
-    <!-- reprises d'entrelacs : V1 repasse sur H1, V2 repasse sur H2 -->
-    <rect x="22" y="22" width="16" height="16"/>
-    <rect x="62" y="62" width="16" height="16"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Igor — la tresse vivante">
+  <!-- « La tresse vivante » : deux fibres végétales entrelacées.
+       Organique, fibré, vivant — le commun se tresse. -->
+  <g fill="none" stroke-width="11" stroke-linecap="round">
+    <!-- fibre A (verte) -->
+    <path d="M35,14 C35,22 42,24 50,30 C60,35 68,42 68,50 C68,58 60,65 50,70 C42,76 35,78 35,86"
+          stroke="#2E7D4E"/>
+    <!-- fibre B (terre) — passe par-dessus A aux deux croisements -->
+    <path d="M65,14 C65,22 58,24 50,30 C40,35 32,42 32,50 C32,58 40,65 50,70 C58,76 65,78 65,86"
+          stroke="#E2622E"/>
+    <!-- reprise d'entrelacs : A repasse sur B au croisement haut -->
+    <path d="M43,24.5 C46,26.5 48,28 50,30 C52,32 55,33.5 57.5,35.5"
+          stroke="#2E7D4E"/>
   </g>
 </svg>

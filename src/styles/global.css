@@ -1,31 +1,33 @@
-/* Charte Igor — niveau 1. Source : resources/shared/identites/identite-igor.yaml
-   Registre Kropotkine documentaire — lin écru, terre cuite, sérif robuste. */
+/* Charte Igor v2 — moderne, dynamique, nature.
+   Source : resources/shared/identites/identite-igor.yaml */
 
 :root {
-  --fond-clair: #EDE4D3;
-  --fond-appui: #E3D7C0;
-  --texte: #1F1B16;
-  --texte-attenue: #5A5145;
-  --accent: #A0442B;
-  --accent-sombre: #7A3320;
-  --secondaire: #6B7A4F;
-  --lien: #A0442B;
-  --trait: #C9B89A;
-  --fond-sombre: #1F1B16;
+  --fond: #F5F7F2;
+  --fond-carte: #FFFFFF;
+  --texte: #19241E;
+  --texte-attenue: #5C6B5E;
+  --vert: #2E7D4E;
+  --vert-profond: #1C4A32;
+  --accent: #E2622E;
+  --accent-sombre: #C24E1F;
+  --lien: #2E7D4E;
+  --trait: #DDE3D6;
+  --fond-sombre: #1C4A32;
 
-  --titre: 'Spectral', Georgia, serif;
+  --titre: 'Inter', system-ui, -apple-system, sans-serif;
   --corps: 'Source Serif 4', Georgia, serif;
+  --ui: 'Inter', system-ui, -apple-system, sans-serif;
   --mono: 'IBM Plex Mono', 'Courier New', monospace;
 
   --largeur-texte: 42rem;
-  --largeur-large: 64rem;
+  --largeur-large: 66rem;
 }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 
 body {
-  background: var(--fond-clair);
+  background: var(--fond);
   color: var(--texte);
   font-family: var(--corps);
   font-size: 18px;
@@ -33,13 +35,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 { font-family: var(--titre); font-weight: 600; line-height: 1.25; }
-h1 { font-size: 2.4rem; letter-spacing: -0.015em; margin: 0 0 1rem; }
-h2 { font-size: 1.55rem; margin: 2.5rem 0 0.75rem; }
-h3 { font-size: 1.2rem; margin: 1.75rem 0 0.5rem; }
+h1, h2, h3 { font-family: var(--titre); line-height: 1.18; letter-spacing: -0.02em; }
+h1 { font-size: 2.6rem; font-weight: 800; margin: 0 0 1rem; }
+h2 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 0.75rem; }
+h3 { font-size: 1.18rem; font-weight: 700; margin: 1.75rem 0 0.5rem; }
 
 a { color: var(--lien); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-a:hover { color: var(--accent-sombre); }
+a:hover { color: var(--accent); }
 
 p { margin: 0 0 1rem; }
 
@@ -50,91 +52,135 @@ code, .mono { font-family: var(--mono); font-size: 0.88em; }
 
 .attenue { color: var(--texte-attenue); }
 .terre { color: var(--accent); }
+.vert { color: var(--vert); }
 
 /* En-tête */
 .site-tete {
+  background: var(--fond);
   border-bottom: 1px solid var(--trait);
-  padding: 1.25rem 0;
+  padding: 1.1rem 0;
+  position: sticky; top: 0; z-index: 10;
 }
 .site-tete .enveloppe {
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: 1rem;
 }
 .marque { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: var(--texte); }
-.marque svg { width: 34px; height: 34px; color: var(--accent); }
-.marque .nom { font-family: var(--titre); font-size: 1.3rem; font-weight: 600; }
-.marque .accroche { font-size: 0.82rem; color: var(--texte-attenue); font-style: italic; }
-nav.menu { display: flex; gap: 1.5rem; font-size: 0.95rem; }
-nav.menu a { text-decoration: none; }
-nav.menu a:hover { text-decoration: underline; }
+.marque svg { width: 40px; height: 40px; flex-shrink: 0; }
+.marque .nom { font-family: var(--titre); font-size: 1.12rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+.marque .accroche { font-family: var(--ui); font-size: 0.8rem; color: var(--vert); font-weight: 500; }
+
+nav.menu { display: flex; gap: 0.35rem; font-family: var(--ui); font-size: 0.92rem; font-weight: 500; }
+nav.menu a {
+  text-decoration: none; color: var(--texte);
+  padding: 0.4rem 0.8rem; border-radius: 999px;
+}
+nav.menu a:hover { background: var(--trait); color: var(--vert-profond); }
 
 /* Bandeau d'accueil */
 .bandeau {
-  padding: 4rem 0 3rem;
+  padding: 4.5rem 0 3.5rem;
+  background: linear-gradient(180deg, var(--fond) 0%, #EBF0E8 100%);
   border-bottom: 1px solid var(--trait);
 }
 .bandeau .accroche-grande {
   font-family: var(--titre);
-  font-size: 2.9rem;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
   margin: 0 0 1.25rem;
 }
-.bandeau .accroche-grande em { color: var(--accent); font-style: normal; }
-.bandeau .chapo { font-size: 1.15rem; max-width: var(--largeur-texte); }
+.bandeau .accroche-grande em { color: var(--vert); font-style: normal; }
+.bandeau .accroche-grande .pousse { color: var(--accent); font-style: normal; }
+.bandeau .chapo { font-size: 1.18rem; max-width: var(--largeur-texte); }
+
+/* Étiquette pilule (UI moderne) */
+.etiquette {
+  display: inline-block;
+  font-family: var(--ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--vert);
+  background: #E6F0E9;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+.etiquette.terre { color: var(--accent); background: #FBE7DD; }
+
+/* Portes d'entrée (accueil) */
+.portes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+.porte {
+  display: block; text-decoration: none; color: var(--texte);
+  background: var(--fond-carte);
+  border: 1px solid var(--trait);
+  border-radius: 12px;
+  padding: 1.4rem;
+  transition: transform .12s ease, border-color .12s ease;
+}
+.porte:hover { transform: translateY(-3px); border-color: var(--vert); }
+.porte .num { font-family: var(--ui); font-weight: 800; color: var(--accent); font-size: 0.85rem; }
+.porte h3 { margin: 0.3rem 0 0.4rem; }
+.porte p { font-size: 0.92rem; color: var(--texte-attenue); margin: 0; }
 
 /* Cartes de corpus */
 .grille-cartes {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.1rem;
   margin: 1.5rem 0;
 }
 .carte {
-  background: var(--fond-appui);
+  background: var(--fond-carte);
   border: 1px solid var(--trait);
-  border-radius: 4px;
-  padding: 1.25rem;
+  border-radius: 12px;
+  padding: 1.3rem;
+  transition: border-color .12s ease;
 }
-.carte .etiquette {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent);
-}
-.carte h3 { margin: 0.4rem 0 0.5rem; font-size: 1.08rem; }
+.carte:hover { border-color: var(--vert); }
+.carte h3 { margin: 0.55rem 0 0.5rem; font-size: 1.06rem; }
 .carte p { font-size: 0.92rem; color: var(--texte-attenue); margin: 0; }
-.carte .meta { font-family: var(--mono); font-size: 0.72rem; color: var(--texte-attenue); margin-top: 0.75rem; }
+.carte .meta { font-family: var(--mono); font-size: 0.72rem; color: var(--texte-attenue); margin-top: 0.8rem; }
 
 /* Encart mock */
 .mock {
-  border-left: 3px solid var(--secondaire);
-  background: var(--fond-appui);
-  padding: 0.5rem 1rem;
+  border-left: 3px solid var(--accent);
+  background: #FBE7DD;
+  padding: 0.6rem 1rem;
+  border-radius: 0 8px 8px 0;
+  font-family: var(--ui);
   font-size: 0.85rem;
-  color: var(--texte-attenue);
+  color: var(--texte);
   margin: 1.5rem 0;
 }
-.mock strong { color: var(--secondaire); }
+.mock strong { color: var(--accent-sombre); }
 
 /* Pied de page */
 .site-pied {
   background: var(--fond-sombre);
-  color: var(--fond-clair);
+  color: #DDE7DE;
   margin-top: 4rem;
-  padding: 2.5rem 0;
-  font-size: 0.88rem;
+  padding: 2.75rem 0;
+  font-size: 0.9rem;
 }
-.site-pied a { color: var(--fond-clair); }
-.site-pied .marque .nom { color: var(--fond-clair); }
-.site-pied svg { color: var(--fond-clair); }
+.site-pied a { color: #FFFFFF; }
+.site-pied a:hover { color: var(--accent); }
+.site-pied .marque .nom { color: #FFFFFF; }
+.site-pied .marque .accroche { color: #9DBDA8; }
 
 /* Contenu courant */
-main.contenu { padding: 2.5rem 0 1rem; }
-main.contenu .colonne-texte h2:first-child { margin-top: 0; }
+main.contenu { padding: 2.75rem 0 1rem; }
+main.contenu .colonne-texte h2:first-child,
+main.contenu h1 + p + h2 { margin-top: 1.5rem; }
 
-hr { border: none; border-top: 1px solid var(--trait); margin: 2.5rem 0; }
+hr { border: none; border-top: 1px solid var(--trait); margin: 2.75rem 0; }
 
 ul { padding-left: 1.2rem; }
 li { margin: 0.3rem 0; }

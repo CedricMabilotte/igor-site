@@ -18,9 +18,12 @@ propre d'Igor (charte @graphiste niveau 1).
 - **Node** : 22
 - **Pages** : `/` `/corpus` `/methode` `/a-propos` — contenu d'illustration (mock),
   production de corpus réel en pause (décision Ced 2026-05-20)
-- **Identité** : charte `resources/shared/identites/identite-igor.yaml` —
-  lin écru / terre cuite, sérif Spectral + Source Serif 4 + IBM Plex Mono,
-  mark « le tissage » (`public/mark-igor.svg`)
+- **Identité** : charte `resources/shared/identites/identite-igor.yaml` v2 —
+  moderne / dynamique / nature : fond clair verté, vert vivant #2E7D4E,
+  accent terre #E2622E ; Inter (display + UI) + Source Serif 4 (corps) +
+  IBM Plex Mono ; mark « la tresse vivante » (`public/mark-igor.svg`)
+- **Titre du site** : « Igor, le cosaque du kolkhoze » / sous-titre
+  « Refaire culture en Communs »
 
 ## Reste à provisionner
 

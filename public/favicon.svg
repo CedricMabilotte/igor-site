@@ -1,14 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Igor — le tissage">
-  <!-- « Le tissage » : quatre bandes entrelacées — le commun se tisse, ne s'érige pas. -->
-  <g fill="currentColor">
-    <!-- bandes verticales -->
-    <rect x="22" y="12" width="16" height="76" rx="3"/>
-    <rect x="62" y="12" width="16" height="76" rx="3"/>
-    <!-- bandes horizontales (passent par-dessus les verticales) -->
-    <rect x="12" y="22" width="76" height="16" rx="3"/>
-    <rect x="12" y="62" width="76" height="16" rx="3"/>
-    <!-- reprises d'entrelacs : V1 repasse sur H1, V2 repasse sur H2 -->
-    <rect x="22" y="22" width="16" height="16"/>
-    <rect x="62" y="62" width="16" height="16"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Igor">
+  <rect width="100" height="100" rx="20" fill="#F5F7F2"/>
+  <g fill="none" stroke-width="12" stroke-linecap="round">
+    <path d="M35,16 C35,24 42,26 50,32 C60,37 68,44 68,52 C68,60 60,67 50,72 C42,78 35,80 35,86"
+          stroke="#2E7D4E"/>
+    <path d="M65,16 C65,24 58,26 50,32 C40,37 32,44 32,52 C32,60 40,67 50,72 C58,78 65,80 65,86"
+          stroke="#E2622E"/>
+    <path d="M43,26.5 C46,28.5 48,30 50,32 C52,34 55,35.5 57.5,37.5"
+          stroke="#2E7D4E"/>
   </g>
 </svg>

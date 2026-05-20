@@ -1,19 +1,27 @@
 ---
-import '@fontsource/spectral/400.css';
-import '@fontsource/spectral/600.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/inter/800.css';
 import '@fontsource/source-serif-4/400.css';
 import '@fontsource/source-serif-4/600.css';
 import '@fontsource/ibm-plex-mono/400.css';
 import '../styles/global.css';
 
-const { titre = 'Projet Plan B — Refaire culture en Communs', description = "Droit civil des Communs, mémoire des luttes paysannes-libres, libertaires et d'éducation populaire. Cartographier ce qui a fonctionné, nommer le dispositif juridique qui le rend reproductible." } = Astro.props;
+const { titre = 'Igor, le cosaque du kolkhoze — Refaire culture en Communs', description = "Igor cartographie le droit civil des Communs : dispositifs juridiques reproductibles, précédents documentés, mémoire des luttes. Il anime le Projet Plan B et d'autres modèles de Communs." } = Astro.props;
 
+// Menu sur les pages existantes. L'arborescence cible (Problèmes / Dispositifs /
+// Précédents / Carte) est proposée dans la bulle « structure-site-projetplanb »
+// — à implémenter par @neo dans une phase ultérieure.
 const menu = [
   { href: '/corpus', texte: 'Corpus' },
   { href: '/methode', texte: 'Méthode' },
   { href: '/a-propos', texte: 'À propos' },
 ];
-const mark = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="22" y="12" width="16" height="76" rx="3"/><rect x="62" y="12" width="16" height="76" rx="3"/><rect x="12" y="22" width="76" height="16" rx="3"/><rect x="12" y="62" width="76" height="16" rx="3"/><rect x="22" y="22" width="16" height="16"/><rect x="62" y="62" width="16" height="16"/></g></svg>`;
+
+// « La tresse vivante » — deux fibres végétales entrelacées (bichrome).
+const mark = `<svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke-width="11" stroke-linecap="round"><path d="M35,14 C35,22 42,24 50,30 C60,35 68,42 68,50 C68,58 60,65 50,70 C42,76 35,78 35,86" stroke="#2E7D4E"/><path d="M65,14 C65,22 58,24 50,30 C40,35 32,42 32,50 C32,58 40,65 50,70 C58,76 65,78 65,86" stroke="#E2622E"/><path d="M43,24.5 C46,26.5 48,28 50,30 C52,32 55,33.5 57.5,35.5" stroke="#2E7D4E"/></g></svg>`;
 ---
 <!doctype html>
 <html lang="fr">
@@ -30,7 +38,7 @@ const mark = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria
         <a class="marque" href="/">
           <Fragment set:html={mark} />
           <span>
-            <span class="nom">projet plan b</span><br />
+            <span class="nom">Igor, le cosaque du kolkhoze</span><br />
             <span class="accroche">Refaire culture en Communs</span>
           </span>
         </a>
@@ -46,14 +54,17 @@ const mark = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria
       <div class="enveloppe">
         <a class="marque" href="/">
           <Fragment set:html={mark} />
-          <span class="nom">projet plan b</span>
+          <span>
+            <span class="nom">Igor, le cosaque du kolkhoze</span><br />
+            <span class="accroche">Refaire culture en Communs</span>
+          </span>
         </a>
-        <p style="margin-top:1rem;max-width:42rem;">
-          Projet Igor — voix du droit des Communs dans l'agora.
-          Droit civil, mémoire des luttes, dispositifs reproductibles.
-          Fait avant principe, outil avant modèle.
+        <p style="margin-top:1.25rem;max-width:42rem;">
+          Igor cartographie le droit civil des Communs — dispositifs reproductibles,
+          précédents documentés, mémoire des luttes. Il anime le Projet Plan B et
+          d'autres modèles de Communs. Fait avant principe, outil avant modèle.
         </p>
-        <p class="mono" style="font-size:0.78rem;opacity:0.7;">
+        <p class="mono" style="font-size:0.78rem;opacity:0.65;">
           projetplanb.org — corpus en construction — contenu d'illustration
         </p>
       </div>
