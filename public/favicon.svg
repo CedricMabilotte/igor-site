@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Igor — le tissage">
+  <!-- « Le tissage » : quatre bandes entrelacées — le commun se tisse, ne s'érige pas. -->
+  <g fill="currentColor">
+    <!-- bandes verticales -->
+    <rect x="22" y="12" width="16" height="76" rx="3"/>
+    <rect x="62" y="12" width="16" height="76" rx="3"/>
+    <!-- bandes horizontales (passent par-dessus les verticales) -->
+    <rect x="12" y="22" width="76" height="16" rx="3"/>
+    <rect x="12" y="62" width="76" height="16" rx="3"/>
+    <!-- reprises d'entrelacs : V1 repasse sur H1, V2 repasse sur H2 -->
+    <rect x="22" y="22" width="16" height="16"/>
+    <rect x="62" y="62" width="16" height="16"/>
+  </g>
+</svg>

@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Mock — listing du corpus. Production réelle en pause : seules 2 analyses existent.
+const familles = [
+  {
+    nom: 'Analyses juridiques',
+    desc: 'Étude complète d’un dispositif : textes, jurisprudence, limites, mise en œuvre.',
+    entrees: [
+      { titre: 'Libérer une terre en propriété d’usage : fonds de dotation + association', etat: 'documentée' },
+      { titre: 'Sécuriser un foncier agricole collectif : la voie GFA', etat: 'documentée' },
+      { titre: 'Structures collectives sans gouvernance verticale : asso, SCIC, SCOP', etat: 'mock' },
+      { titre: 'Défendre une occupation contre une expulsion', etat: 'mock' },
+    ],
+  },
+  {
+    nom: 'Cas d’étude',
+    desc: 'Un mouvement réel analysé comme précédent opérationnel.',
+    entrees: [
+      { titre: 'La Commune de Paris — laboratoire juridique en 72 jours', etat: 'mock' },
+      { titre: 'Longo Maï — cinquante ans de coopérative agricole autogérée', etat: 'mock' },
+    ],
+  },
+  {
+    nom: 'Tactiques',
+    desc: 'Protocole d’action séquencé, faisable par trois personnes en trente jours.',
+    entrees: [
+      { titre: 'Organiser un cercle de gouvernance horizontale', etat: 'mock' },
+      { titre: 'Constituer une caisse de résistance', etat: 'mock' },
+    ],
+  },
+  {
+    nom: 'Dispositifs',
+    desc: 'Fiches juridiques courtes — la boîte à outils.',
+    entrees: [
+      { titre: 'Fonds de dotation', etat: 'mock' },
+      { titre: 'GFA — Groupement Foncier Agricole', etat: 'mock' },
+      { titre: 'Bail emphytéotique', etat: 'mock' },
+      { titre: 'SCIC — Société Coopérative d’Intérêt Collectif', etat: 'mock' },
+    ],
+  },
+];
+---
+<Base titre="Corpus — Projet Plan B">
+  <main class="contenu">
+    <div class="enveloppe">
+      <h1>Le corpus</h1>
+      <p class="colonne-texte attenue">
+        Quatre familles de documents. Les analyses et cas d'étude forment le
+        corpus pérenne et citable ; les tactiques sont actionnables à court
+        terme ; les dispositifs sont la boîte à outils juridique.
+      </p>
+      <p class="mock">
+        <strong>Corpus en construction.</strong> Les entrées marquées « mock »
+        sont des emplacements d'illustration. La production de corpus est
+        momentanément en pause — priorité à la mise en ligne du site.
+      </p>
+
+      {familles.map((f) => (
+        <section>
+          <h2>{f.nom}</h2>
+          <p class="colonne-texte attenue">{f.desc}</p>
+          <div class="grille-cartes">
+            {f.entrees.map((e) => (
+              <article class="carte">
+                <h3>{e.titre}</h3>
+                <div class="meta">{e.etat === 'documentée' ? '● documentée' : '⌁ mock — à produire'}</div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </main>
+</Base>

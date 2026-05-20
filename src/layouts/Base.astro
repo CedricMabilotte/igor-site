@@ -1,0 +1,62 @@
+---
+import '@fontsource/spectral/400.css';
+import '@fontsource/spectral/600.css';
+import '@fontsource/source-serif-4/400.css';
+import '@fontsource/source-serif-4/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '../styles/global.css';
+
+const { titre = 'Projet Plan B — Refaire culture en Communs', description = "Droit civil des Communs, mémoire des luttes paysannes-libres, libertaires et d'éducation populaire. Cartographier ce qui a fonctionné, nommer le dispositif juridique qui le rend reproductible." } = Astro.props;
+
+const menu = [
+  { href: '/corpus', texte: 'Corpus' },
+  { href: '/methode', texte: 'Méthode' },
+  { href: '/a-propos', texte: 'À propos' },
+];
+const mark = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><rect x="22" y="12" width="16" height="76" rx="3"/><rect x="62" y="12" width="16" height="76" rx="3"/><rect x="12" y="22" width="76" height="16" rx="3"/><rect x="12" y="62" width="76" height="16" rx="3"/><rect x="22" y="22" width="16" height="16"/><rect x="62" y="62" width="16" height="16"/></g></svg>`;
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{titre}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <header class="site-tete">
+      <div class="enveloppe">
+        <a class="marque" href="/">
+          <Fragment set:html={mark} />
+          <span>
+            <span class="nom">projet plan b</span><br />
+            <span class="accroche">Refaire culture en Communs</span>
+          </span>
+        </a>
+        <nav class="menu">
+          {menu.map((m) => <a href={m.href}>{m.texte}</a>)}
+        </nav>
+      </div>
+    </header>
+
+    <slot />
+
+    <footer class="site-pied">
+      <div class="enveloppe">
+        <a class="marque" href="/">
+          <Fragment set:html={mark} />
+          <span class="nom">projet plan b</span>
+        </a>
+        <p style="margin-top:1rem;max-width:42rem;">
+          Projet Igor — voix du droit des Communs dans l'agora.
+          Droit civil, mémoire des luttes, dispositifs reproductibles.
+          Fait avant principe, outil avant modèle.
+        </p>
+        <p class="mono" style="font-size:0.78rem;opacity:0.7;">
+          projetplanb.org — corpus en construction — contenu d'illustration
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
