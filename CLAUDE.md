@@ -21,7 +21,8 @@ propre d'Igor (charte @graphiste niveau 1).
 - **Identité** : charte `resources/shared/identites/identite-igor.yaml` v2 —
   moderne / dynamique / nature : fond clair verté, vert vivant #2E7D4E,
   accent terre #E2622E ; Inter (display + UI) + Source Serif 4 (corps) +
-  IBM Plex Mono ; mark « la tresse vivante » (`public/mark-igor.svg`)
+  IBM Plex Mono ; mark « la pousse tressée » — illustration feuilles +
+  tige tressée + racines (`public/mark-igor.svg`)
 - **Titre du site** : « Igor, le cosaque du kolkhoze » / sous-titre
   « Refaire culture en Communs »
 
