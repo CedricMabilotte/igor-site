@@ -288,3 +288,28 @@ a.fonction-carte:hover { border-color: var(--vert); transform: translateY(-2px);
 .badge.pseudo-liberation { background: #F1EFE8; color: #5F5E5A; }
 .precedent-extrait { font-size: 0.92rem; color: var(--texte-attenue); margin: 0.5rem 0 0; }
 .angle-court { font-family: var(--corps); font-style: italic; font-size: 1.2rem; color: var(--vert-profond); border-left: 3px solid var(--vert); padding-left: 1rem; margin: 2.5rem 0 1rem; max-width: 36rem; }
+
+/* ── Étape 4 — pages du miroir ────────────────────────────────────────── */
+.puces { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
+.puce {
+  font-family: var(--ui); font-size: 0.88rem; text-decoration: none;
+  background: var(--fond-carte); border: 1px solid var(--trait); border-radius: 999px;
+  padding: 0.3rem 0.85rem; color: var(--vert-profond);
+}
+.puce:hover { border-color: var(--vert); }
+.bloc-couche { margin: 1.5rem 0; padding: 1.1rem 1.25rem; border: 1px solid var(--trait); border-radius: 12px; }
+.bloc-couche.couche-portage-ig { border-color: #C0DD97; background: #EAF3DE; }
+.bloc-couche.couche-operateur { border-style: dashed; background: #FAEEDA; border-color: #E2C99A; }
+.bloc-couche h2 { margin-top: 0; }
+.facteur-ligne { display: flex; gap: 0.9rem; align-items: flex-start; margin: 0.75rem 0; max-width: 42rem; }
+.facteur-num {
+  font-family: var(--mono); font-size: 0.85rem; color: var(--vert);
+  border: 1px solid var(--trait); border-radius: 50%; width: 1.8rem; height: 1.8rem;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.facteur-ligne p { margin: 0.15rem 0 0; }
+.fiche-table { border-collapse: collapse; margin: 1rem 0; font-family: var(--ui); font-size: 0.95rem; }
+.fiche-table td { padding: 0.4rem 0; border-bottom: 1px solid var(--trait); vertical-align: top; }
+.fiche-table td:first-child { color: var(--texte-attenue); padding-right: 1.5rem; white-space: nowrap; }
+.source-loi { font-size: 0.82rem; color: var(--texte-attenue); margin-top: -0.4rem; }
+.corps-md { max-width: 42rem; margin: 1rem 0; }

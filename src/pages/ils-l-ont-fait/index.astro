@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ProfilFacteurs from '../../components/ProfilFacteurs.astro';
+const precedents = (await getCollection('precedents')).sort((a,b)=> (a.data.statut==='preuve'?0:1)-(b.data.statut==='preuve'?0:1));
+---
+<Base titre="Ils l'ont fait — Projet Plan B">
+  <section class="bandeau"><div class="enveloppe">
+    <p class="sur-titre">la preuve par le réel</p>
+    <h1 class="accroche-grande">Ils l'ont fait</h1>
+    <p class="chapo">Des précédents documentés, chacun avec son profil de libération. Certains sont des preuves ; d'autres, des pseudo-libérations à lire en contraste — la critique vise le motif, jamais l'acteur.</p>
+  </div></section>
+  <main class="contenu"><div class="enveloppe colonne-large">
+    <div class="precedents-grille">
+      {precedents.map((p)=>(
+        <a class={`precedent${p.data.statut==='pseudo-liberation'?' pseudo':''}`} href={`/ils-l-ont-fait/${p.id}`} style="text-decoration:none;color:inherit;">
+          <div class="precedent-tete">
+            <span class="precedent-nom">{p.data.nom}</span>
+            <span class={`badge ${p.data.statut}`}>{p.data.statut==='preuve'?'preuve':'pseudo-libération'}</span>
+          </div>
+          {p.data.profil_facteurs && <ProfilFacteurs vecteur={p.data.profil_facteurs} compact={true} />}
+          <p class="precedent-extrait">{p.data.extrait}</p>
+        </a>
+      ))}
+    </div>
+  </div></main>
+</Base>

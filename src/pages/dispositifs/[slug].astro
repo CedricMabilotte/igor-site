@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+export async function getStaticPaths() {
+  const d = await getCollection('dispositifs');
+  return d.map((e) => ({ params: { slug: e.id }, props: { e } }));
+}
+const { e } = Astro.props;
+const d = e.data;
+const couchesNom: Record<string,string> = { 'portage-ig': "Portage — intérêt général, inaliénable", usage: 'Usage — autogéré', operateur: 'Opérateur — subordonné', transversal: 'Transversal' };
+const montages = (await getCollection('montages')).filter((m) => m.data.briques.some((b: any) => b.dispositif.id === e.id));
+---
+<Base titre={`${d.terme} — Projet Plan B`} description={d.definition}>
+  <article class="contenu"><div class="enveloppe colonne-large">
+    <p class="sur-titre">dispositif · {couchesNom[d.couche]}</p>
+    <h1 class="titre-montage">{d.terme}</h1>
+    {d.source_juridique && <p class="mono source-loi">{d.source_juridique}</p>}
+    <p class="chapo">{d.definition}</p>
+    {d.avantages && <><h2>Avantage</h2><p class="colonne-texte">{d.avantages}</p></>}
+    {d.limites && <><h2>Limite</h2><p class="colonne-texte">{d.limites}</p></>}
+    <h2>Montages où il figure</h2>
+    {montages.length === 0 ? <p class="attenue">Aucun montage documenté pour l'instant.</p> : (
+      <div class="puces">{montages.map((m) => <a class="puce" href={`/modeles/montages/${m.id}`}>{m.data.title}</a>)}</div>
+    )}
+  </div></article>
+</Base>

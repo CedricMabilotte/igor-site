@@ -1,0 +1,27 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+export async function getStaticPaths() {
+  const c = await getCollection('contrats');
+  return c.map((e) => ({ params: { slug: e.id }, props: { e } }));
+}
+const { e } = Astro.props;
+const d = e.data;
+const { Content } = await render(e);
+const fam: Record<number,string> = {1:'Baux longs à droits réels',2:'Tenures coutumières à double propriété',3:'Baux ruraux (fermage)',4:'Contrats précaires ou personnels',5:'Démembrements'};
+const montages = (await getCollection('montages')).filter((m)=> m.data.contrat_de_lien?.id === e.id);
+const lignes = [
+  ['Source', d.source_juridique], ['Famille', `${d.famille} — ${fam[d.famille]}`], ['Durée', d.duree],
+  ['Nature du droit', d.nature_droit === 'reel' ? 'réel (opposable, transmissible)' : (d.nature_droit==='personnel'?'personnel':null)],
+  ['Bâti', d.bati_a_usager ? "à l'usager" : 'au porteur'], ['Redevance', d.redevance],
+].filter(([,v]) => v);
+---
+<Base titre={`${d.nom} — Projet Plan B`}>
+  <article class="contenu"><div class="enveloppe colonne-large">
+    <p class="sur-titre">contrat de lien · famille {d.famille}</p>
+    <h1 class="titre-montage">{d.nom}</h1>
+    <table class="fiche-table"><tbody>{lignes.map(([k,v]) => <tr><td>{k}</td><td>{v}</td></tr>)}</tbody></table>
+    <div class="corps-md"><Content /></div>
+    {montages.length > 0 && <><h2>Employé dans</h2><div class="puces">{montages.map((m)=><a class="puce" href={`/modeles/montages/${m.id}`}>{m.data.title}</a>)}</div></>}
+  </div></article>
+</Base>

@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+const facteurs = (await getCollection('facteurs')).sort((a, b) => a.data.ordre - b.data.ordre);
+const familles = [
+  { id: 'le-bien', nom: 'Le bien', sous: 'le sortir du marché' },
+  { id: 'l-usage', nom: "L'usage et les usagers", sous: 'le rendre libre' },
+];
+---
+<Base titre="Les 7 facteurs de libération — Projet Plan B">
+  <section class="bandeau"><div class="enveloppe">
+    <p class="sur-titre">modèles · la grille</p>
+    <h1 class="accroche-grande">Les 7 facteurs de libération</h1>
+    <p class="chapo">« Libérer » n'est pas un degré unique mais un vecteur. La libération réelle exige les deux familles ensemble : le bien seul donne une pseudo-libération ; l'usage seul, une occupation précaire.</p>
+  </div></section>
+  <main class="contenu"><div class="enveloppe colonne-large">
+    {familles.map((fam) => (
+      <section>
+        <h2>{fam.nom} <span class="attenue">— {fam.sous}</span></h2>
+        {facteurs.filter((f) => f.data.famille === fam.id).map((f) => (
+          <div class="facteur-ligne">
+            <span class="facteur-num">{f.data.ordre}</span>
+            <div><strong>{f.data.nom}</strong><p class="attenue">{f.data.desc}</p></div>
+          </div>
+        ))}
+      </section>
+    ))}
+  </div></main>
+</Base>

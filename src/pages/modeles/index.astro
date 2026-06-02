@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+const entrees = [
+  { href: '/modeles/fonctions/liberer-une-terre', t: 'Par fonction', d: "Le besoin du collectif (« libérer une terre ») → les montages qui le réalisent, ordonnés par facteurs libérés." },
+  { href: '/modeles/couches', t: 'Par couche', d: "L'architecture à deux étages : portage d'intérêt général, usage autogéré, opérateur subordonné." },
+  { href: '/dispositifs', t: 'Par dispositif', d: "Les briques juridiques une à une — chacune déclare sa couche et les montages où elle figure." },
+  { href: '/contrats', t: 'Par contrat de lien', d: "La typologie des contrats porteur ↔ usager — le curseur de libération (facteurs 5, 6, 7)." },
+  { href: '/modeles/facteurs', t: 'La grille des 7 facteurs', d: "Ce que « libérer » veut dire, décomposé : le bien et l'usage." },
+];
+---
+<Base titre="Les modèles — Projet Plan B">
+  <section class="bandeau"><div class="enveloppe">
+    <p class="sur-titre">le miroir des modèles</p>
+    <h1 class="accroche-grande">Les modèles</h1>
+    <p class="chapo">Un dispositif isolé ne libère presque rien : ce qui libère, c'est l'<em>assemblage</em>. Quatre entrées sur le même graphe, plus la grille de lecture.</p>
+  </div></section>
+  <main class="contenu"><div class="enveloppe">
+    <div class="fonctions-grille">
+      {entrees.map((e) => (
+        <a class="fonction-carte" href={e.href}>
+          <span class="titre-fonction">{e.t}</span>
+          <span class="sous">{e.d}</span>
+        </a>
+      ))}
+    </div>
+  </div></main>
+</Base>

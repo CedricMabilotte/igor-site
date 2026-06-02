@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+const ordre: Record<string,number> = { actif:0,'a-venir':1,differe:2 };
+const lib: Record<string,string> = { actif:'disponible','a-venir':'à venir',differe:'différé' };
+const fonctions = (await getCollection('fonctions')).sort((a,b)=>(ordre[a.data.statut]??9)-(ordre[b.data.statut]??9));
+---
+<Base titre="Agir — Projet Plan B">
+  <section class="bandeau"><div class="enveloppe">
+    <p class="sur-titre">la porte humaine</p>
+    <h1 class="accroche-grande">Qu'est-ce qui vous amène ?</h1>
+    <p class="chapo">On entre par ce qu'on cherche à faire. À chaque fonction répond un ou plusieurs montages — et ce que vous pouvez préparer vous-mêmes, avant de vous faire accompagner.</p>
+  </div></section>
+  <main class="contenu"><div class="enveloppe">
+    <div class="fonctions-grille">
+      {fonctions.map((f)=>{const a=f.data.statut==='actif';const T=a?'a':'div';return (
+        <T class={`fonction-carte${a?'':' inactive'}`} href={a?`/modeles/fonctions/${f.id}`:undefined}>
+          <span class="module">{f.data.module}</span>
+          <span class="titre-fonction">{f.data.nom}</span>
+          <span class="sous">{f.data.sous_titre}</span>
+          <span class="etat">{lib[f.data.statut]}</span>
+        </T>);})}
+    </div>
+  </div></main>
+</Base>

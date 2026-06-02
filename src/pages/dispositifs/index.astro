@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+const couchesNom: Record<string,string> = { 'portage-ig': 'Portage', usage: 'Usage', operateur: 'Opérateur', transversal: 'Transversal' };
+const dispositifs = (await getCollection('dispositifs')).sort((a,b)=>a.data.terme.localeCompare(b.data.terme));
+---
+<Base titre="Dispositifs — Projet Plan B">
+  <section class="bandeau"><div class="enveloppe">
+    <p class="sur-titre">modèles · dispositifs</p>
+    <h1 class="accroche-grande">Les dispositifs</h1>
+    <p class="chapo">Les briques juridiques. Chacune se comprend par sa couche et les montages où elle figure — jamais isolée.</p>
+  </div></section>
+  <main class="contenu"><div class="enveloppe colonne-large">
+    <div class="fonctions-grille">
+      {dispositifs.map((d) => (
+        <a class="fonction-carte" href={`/dispositifs/${d.id}`}>
+          <span class="module">{couchesNom[d.data.couche]}</span>
+          <span class="titre-fonction" style="font-size:1.05rem">{d.data.terme}</span>
+          <span class="sous">{d.data.definition}</span>
+        </a>
+      ))}
+    </div>
+  </div></main>
+</Base>

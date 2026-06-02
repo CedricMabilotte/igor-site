@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+const fam: Record<number,string> = {1:'Baux longs à droits réels',2:'Tenures coutumières à double propriété',3:'Baux ruraux (fermage)',4:'Contrats précaires ou personnels',5:'Démembrements'};
+const contrats = await getCollection('contrats');
+const parFamille = [1,2,3,4,5].map((n)=>({n, nom:fam[n], items:contrats.filter((c)=>c.data.famille===n)}));
+---
+<Base titre="Contrats de lien — Projet Plan B">
+  <section class="bandeau"><div class="enveloppe">
+    <p class="sur-titre">modèles · contrats de lien</p>
+    <h1 class="accroche-grande">Les contrats de lien</h1>
+    <p class="chapo">Le contrat porteur ↔ usager n'est pas un détail : c'est lui qui décide combien de facteurs un montage libère (la pérennité d'habitat, le caractère locatif, la liberté d'activité). Le curseur de libération.</p>
+  </div></section>
+  <main class="contenu"><div class="enveloppe colonne-large">
+    {parFamille.filter((f)=>f.items.length).map((f)=>(
+      <section>
+        <h2>{f.n}. {f.nom}</h2>
+        <div class="fonctions-grille">
+          {f.items.map((c)=>(
+            <a class="fonction-carte" href={`/contrats/${c.id}`}>
+              <span class="titre-fonction" style="font-size:1.05rem">{c.data.nom}</span>
+              <span class="sous">{c.data.nature_droit === 'reel' ? 'droit réel' : 'droit personnel'} · {c.data.bati_a_usager ? 'bâti à l’usager' : 'bâti au porteur'} · {c.data.redevance}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div></main>
+</Base>

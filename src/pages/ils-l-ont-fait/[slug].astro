@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ProfilFacteurs from '../../components/ProfilFacteurs.astro';
+export async function getStaticPaths() {
+  const p = await getCollection('precedents');
+  return p.map((e) => ({ params: { slug: e.id }, props: { e } }));
+}
+const { e } = Astro.props;
+const d = e.data;
+const { Content } = await render(e);
+const montages = (await getCollection('montages')).filter((m)=> m.data.precedents.some((r:any)=>r.id===e.id));
+---
+<Base titre={`${d.nom} — Projet Plan B`} description={d.extrait}>
+  <article class="contenu"><div class="enveloppe colonne-large">
+    <p class="sur-titre">ils l'ont fait · {d.statut==='preuve'?'preuve':'pseudo-libération'}</p>
+    <h1 class="titre-montage">{d.nom}</h1>
+    <p class="mono source-loi">{[d.date,d.lieu].filter(Boolean).join(' · ')}</p>
+    {d.profil_facteurs && <><h2>Profil de libération</h2><ProfilFacteurs vecteur={d.profil_facteurs} /></>}
+    <div class="corps-md"><Content /></div>
+    {montages.length>0 && <><h2>Montage</h2><div class="puces">{montages.map((m)=><a class="puce" href={`/modeles/montages/${m.id}`}>{m.data.title}</a>)}</div></>}
+  </div></article>
+</Base>

@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+const couches = (await getCollection('couches')).sort((a, b) => a.data.rang - b.data.rang);
+const dispositifs = await getCollection('dispositifs');
+---
+<Base titre="L'architecture à deux étages — Projet Plan B">
+  <section class="bandeau"><div class="enveloppe">
+    <p class="sur-titre">modèles · couches</p>
+    <h1 class="accroche-grande">L'architecture à deux étages</h1>
+    <p class="chapo">La hiérarchie des trois intérêts, rendue géométrie. La couche d'un dispositif est fixe : on ne range pas une coopérative en portage.</p>
+  </div></section>
+  <main class="contenu"><div class="enveloppe colonne-large">
+    {couches.map((c) => (
+      <section class={`bloc-couche couche-${c.id}`}>
+        <h2>{c.data.nom} — <span class="attenue">{c.data.intitule}</span></h2>
+        <p class="colonne-texte">{c.data.desc}</p>
+        <div class="puces">
+          {dispositifs.filter((d) => d.data.couche === c.id).map((d) => (
+            <a class="puce" href={`/dispositifs/${d.id}`}>{d.data.terme}</a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div></main>
+</Base>
