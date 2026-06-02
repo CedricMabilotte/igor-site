@@ -1,0 +1,85 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import ProfilFacteurs from '../../../components/ProfilFacteurs.astro';
+
+export async function getStaticPaths() {
+  const montages = await getCollection('montages');
+  return montages.map((m) => ({ params: { slug: m.id }, props: { m } }));
+}
+const { m } = Astro.props;
+const d = m.data;
+
+const rang: Record<string, number> = { 'portage-ig': 1, usage: 2, operateur: 3, transversal: 4 };
+const couches = Object.fromEntries((await getCollection('couches')).map((c) => [c.id, c.data]));
+
+const briques = await Promise.all(
+  d.briques.map(async (b: any) => ({ role: b.role, e: await getEntry(b.dispositif) }))
+);
+briques.sort((a, b) => (rang[a.e.data.couche] ?? 9) - (rang[b.e.data.couche] ?? 9));
+const contrat = d.contrat_de_lien ? await getEntry(d.contrat_de_lien) : null;
+const precedents = await Promise.all(d.precedents.map((p: any) => getEntry(p)));
+const roleNom: Record<string, string> = { porter: 'porte', gouverner: 'gouverne', produire: 'produit', lier: 'relie' };
+---
+<Base titre={`${d.title} — Projet Plan B`} description={d.extrait}>
+  <article class="contenu">
+    <div class="enveloppe colonne-large">
+      <p class="sur-titre">modèles · montage</p>
+      <h1 class="titre-montage">{d.title}</h1>
+      <p class="chapo">{d.extrait}</p>
+
+      <h2>Profil de libération</h2>
+      <p class="colonne-texte attenue">Le degré n'est pas une étiquette posée à la main : il se lit sur sept facteurs, en deux familles. Un montage peut être radical sur le bien et capturé sur l'usage.</p>
+      <ProfilFacteurs vecteur={d.facteurs_liberation} />
+
+      <h2>La chaîne, à deux étages</h2>
+      <div class="schema">
+        {briques.map((b, i) => (
+          <>
+            <div class={`etage etage-${b.e.data.couche}`}>
+              <div class="etage-couche">{couches[b.e.data.couche]?.nom} — {couches[b.e.data.couche]?.intitule}</div>
+              <div class="etage-brique">{b.e.data.terme} <span class="role">({roleNom[b.role]})</span></div>
+              {b.e.data.source_juridique && <div class="etage-source">{b.e.data.source_juridique}</div>}
+            </div>
+            {i === 0 && contrat && (
+              <div class="lien">↓ {contrat.data.nom} <span class="attenue">({contrat.data.source_juridique})</span></div>
+            )}
+          </>
+        ))}
+        <div class="etage etage-operateur fantome">
+          <div class="etage-couche">Opérateur — intérêt collectif, subordonné</div>
+          <div class="etage-brique">SCIC / SCOP — produit l'activité, <strong>jamais propriétaire de la terre</strong></div>
+        </div>
+      </div>
+
+      <h2>Points de soudure</h2>
+      <p class="colonne-texte attenue">Les actes qui lient les briques — là où les montages cèdent quand ils cèdent.</p>
+      <ol class="soudures">
+        {d.points_de_soudure.map((p: string) => <li>{p}</li>)}
+      </ol>
+
+      <h2>Variantes</h2>
+      <ul class="variantes">
+        {d.variantes.map((v: string) => <li>{v}</li>)}
+      </ul>
+
+      <h2>Ils l'ont fait</h2>
+      <div class="precedents-grille">
+        {precedents.map((p) => (
+          <article class={`precedent${p.data.statut === 'pseudo-liberation' ? ' pseudo' : ''}`}>
+            <div class="precedent-tete">
+              <span class="precedent-nom">{p.data.nom}</span>
+              <span class={`badge ${p.data.statut}`}>{p.data.statut === 'preuve' ? 'preuve' : 'pseudo-libération'}</span>
+            </div>
+            {p.data.profil_facteurs && <ProfilFacteurs vecteur={p.data.profil_facteurs} compact={true} />}
+            <p class="precedent-extrait">{p.data.extrait}</p>
+          </article>
+        ))}
+      </div>
+
+      {d.angle_court && (
+        <p class="angle-court">« {d.angle_court} »</p>
+      )}
+    </div>
+  </article>
+</Base>

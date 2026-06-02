@@ -1,4 +1,4 @@
-# CLAUDE.md — Repo igor-site
+# CLAUDE.md — Repo projetplanb-site
 
 **Carnet vivant** pour la collaboration avec un agent Claude sur ce repo.
 À lire au début de chaque session.
@@ -7,40 +7,40 @@
 
 ## État au 20 mai 2026 — site construit, en attente de déploiement
 
-Site Igor dérivé de `goorg-site`, nettoyé et reconstruit avec l'identité
-propre d'Igor (charte @graphiste niveau 1).
+Site Projet Plan B dérivé de `goorg-site`, nettoyé et reconstruit avec l'identité
+propre d'Projet Plan B (charte @graphiste niveau 1).
 
 - **Domaine** : `projetplanb.org`
 - **Stack** : Astro 6 + MDX + React + D3
 - **Déploiement** : Netlify (à connecter — étape côté Ced)
-- **Repo GitHub** : `CedricMabilotte/igor-site`
+- **Repo GitHub** : `CedricMabilotte/projetplanb-site`
 - **Build** : `npm run dev` (port 4321) · `npm run build` · `npm run preview`
 - **Node** : 22
 - **Pages** : `/` `/corpus` `/methode` `/a-propos` — contenu d'illustration (mock),
   production de corpus réel en pause (décision Ced 2026-05-20)
-- **Identité** : charte `resources/shared/identites/identite-igor.yaml` v2 —
+- **Identité** : charte `resources/shared/identites/identite-projetplanb.yaml` v2 —
   moderne / dynamique / nature : fond clair verté, vert vivant #2E7D4E,
   accent terre #E2622E ; Inter (display + UI) + Source Serif 4 (corps) +
   IBM Plex Mono ; mark « la pousse tressée » — illustration feuilles +
-  tige tressée + racines (`public/mark-igor.svg`)
-- **Titre du site** : « Igor, le cosaque du kolkhoze » / sous-titre
+  tige tressée + racines (`public/mark-projetplanb.svg`)
+- **Titre du site** : « Projet Plan B » / sous-titre
   « Refaire culture en Communs »
 
 ## Reste à provisionner
 
 - [x] `npm install` (node_modules + package-lock.json)
-- [x] Symlink `resources/sites/igor-org/` → `claude-sites/igor-site/`
+- [x] Symlink `resources/sites/projetplanb-org/` → `claude-sites/projetplanb-site/`
 - [x] Build vérifié (4 pages)
 - [ ] `git init` + premier commit + push vers GitHub
 - [ ] Connexion Netlify au repo (étape dashboard — voir runbook)
 - [ ] DNS Gandi `projetplanb.org` → Netlify
 - [ ] HTTPS Let's Encrypt actif
 
-## Spécificité Igor
+## Spécificité Projet Plan B
 
 ### Collections de contenu (`src/content/`)
 
-Cinq collections — alignées avec les 5 types de production du `prompt.md` Igor :
+Cinq collections — alignées avec les 5 types de production du `prompt.md` Projet Plan B :
 
 | Collection | Type frontmatter | Description |
 |---|---|---|
@@ -73,23 +73,23 @@ Idem — supprimée pour phase 1.
 
 ### Voix @-tags
 
-`@igor`, `@lumen`, `@kern`, `@ced` etc. — en quotes dans le YAML.
+`@projetplanb`, `@lumen`, `@kern`, `@ced` etc. — en quotes dans le YAML.
 
 ### Frontmatter v7
 
 Conforme à l'agora — voir `agents/CLAUDE.md` (Champs frontmatter standard v7).
-Les champs métier Igor (`dispositif`, `precedent`, `actionnable`, `echelle`)
-viennent du `prisme-igor.yaml` et complètent les champs standards.
+Les champs métier Projet Plan B (`dispositif`, `precedent`, `actionnable`, `echelle`)
+viennent du `prisme-projetplanb.yaml` et complètent les champs standards.
 
 ## Liens
 
-- Workspace : `agents/projects/igor/CLAUDE.md` (instructions du projet)
-- Carnet de naissance : `agents/projects/igor/CARNET-NAISSANCE.md`
-- Routing Vox : `agents/resources/vox/config/chemins/igor.yaml`
-- Prompt agent : `agents/agents/igor/prompt.md`
+- Workspace : `agents/projects/projetplanb/CLAUDE.md` (instructions du projet)
+- Carnet de naissance : `agents/projects/projetplanb/CARNET-NAISSANCE.md`
+- Routing Vox : `agents/resources/vox/config/chemins/projetplanb.yaml`
+- Prompt agent : `agents/agents/projetplanb/prompt.md`
 
 ## Inspiration et pattern de référence
 
 - `claude-sites/goorg-site/CLAUDE.md` — pattern Astro à suivre
 - Composants identitaires de goorg : `src/components/identity/`
-  (à adapter pour Igor une fois la charte @graphiste livrée)
+  (à adapter pour Projet Plan B une fois la charte @graphiste livrée)

@@ -1,8 +1,8 @@
 {
-  "name": "igor-site",
+  "name": "projetplanb-site",
   "type": "module",
   "version": "0.0.1",
-  "description": "Site du projet Igor — Refaire culture en Communs. Droit civil des Communs, mémoire des luttes paysannes-libres, libertaires et d'éducation populaire.",
+  "description": "Site du projet Plan B — Refaire culture en Communs. Droit des communs : montages juridiques de décommodification, dispositifs, précédents.",
   "engines": {
     "node": ">=22.12.0"
   },

@@ -21,7 +21,7 @@ Toute voix porte un `@-tag` :
 - `@ced-persona` — avatar du créateur
 - `@lumen` — voix IA critique, érudite
 - `@goorg` — voix collective hybride
-- `@antimeta`, `@freechi`, `@igor` — autres avatars
+- `@antimeta`, `@freechi`, `@projetplanb` — autres avatars
 
 Le frontmatter `voix` accepte un tableau. Plusieurs voix peuvent coexister.
 

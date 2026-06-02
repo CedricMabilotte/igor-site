@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import { evalDegre } from '../lib/degre';
+const { vecteur, compact = false } = Astro.props;
+const facteurs = (await getCollection('facteurs')).sort((a, b) => a.data.ordre - b.data.ordre);
+const familles = ['le-bien', 'l-usage'];
+const nomFamille: Record<string, string> = { 'le-bien': 'Le bien', 'l-usage': "L'usage" };
+const couleur: Record<string, string> = { libere: '#2E7D4E', partiel: '#BA7517', echoue: '#C9C9C9' };
+const { nLibere, total, label } = evalDegre(vecteur);
+---
+<div class={`profil${compact ? ' compact' : ''}`}>
+  <div class="profil-tete">
+    <span class="profil-degre">{label}</span>
+    <span class="profil-score">{nLibere}/{total} facteurs libérés</span>
+  </div>
+  {!compact && (
+    <div class="profil-familles">
+      {familles.map((fam) => (
+        <div class="profil-famille">
+          <div class="profil-famille-nom">{nomFamille[fam]}</div>
+          {facteurs.filter((f) => f.data.famille === fam).map((f) => (
+            <div class="profil-ligne" title={f.data.desc}>
+              <span class="pastille" style={`background:${couleur[vecteur[f.id] ?? 'echoue']}`}></span>
+              <span>{f.data.nom}</span>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  )}
+  {compact && (
+    <div class="profil-barres">
+      {facteurs.map((f) => (
+        <span class="barre" style={`background:${couleur[vecteur[f.id] ?? 'echoue']}`} title={f.data.nom}></span>
+      ))}
+    </div>
+  )}
+</div>

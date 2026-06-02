@@ -1,0 +1,22 @@
+# L'architecture à deux étages (CADRAGE-01 §1.5-1.6). La couche porte le rang
+# dans la hiérarchie des trois intérêts. Invariant : un dispositif a UNE couche fixe.
+- id: portage-ig
+  nom: Portage
+  intitule: Intérêt général, inaliénable
+  desc: La seule couche qui retire le bien de l'appropriation.
+  rang: 1
+- id: usage
+  nom: Usage
+  intitule: Autogéré, sans propriété
+  desc: Gouverne le bien que la couche de portage a libéré.
+  rang: 2
+- id: operateur
+  nom: Opérateur
+  intitule: Intérêt collectif, subordonné
+  desc: Produit l'activité économique ; ne porte jamais le foncier libéré.
+  rang: 3
+- id: transversal
+  nom: Transversal
+  intitule: Outils techniques
+  desc: Sans vertu libératrice propre ; sens selon le montage.
+  rang: 4

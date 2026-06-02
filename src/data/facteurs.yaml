@@ -1,0 +1,45 @@
+# Les 7 facteurs de libération (CADRAGE-04), liste ordonnée. 2 familles.
+# La libération réelle exige les DEUX familles : le bien seul = pseudo-libération
+# (type Terre de Liens) ; l'usage seul = occupation précaire.
+- id: inalienabilite
+  nom: Inaliénabilité
+  famille: le-bien
+  famille_nom: Le bien
+  ordre: 1
+  desc: Interdiction de revente ; la plus-value de cession est neutralisée.
+- id: non_adossement_capital
+  nom: Non-adossement au capital
+  famille: le-bien
+  famille_nom: Le bien
+  ordre: 2
+  desc: Le bien n'est pas la créance d'apporteurs de fonds (même solidaires) ; aucun capital à préserver, rémunérer ou rembourser.
+- id: devolution_desinteressee
+  nom: Dévolution désintéressée
+  famille: le-bien
+  famille_nom: Le bien
+  ordre: 3
+  desc: À la dissolution, le bien échappe aux membres et apporteurs (« l'enclosure différée »).
+- id: autogouvernance
+  nom: Autogouvernance des usagers
+  famille: l-usage
+  famille_nom: L'usage
+  ordre: 4
+  desc: Ceux qui habitent ou travaillent décident (1 voix = 1 personne) ; pas de bailleur lointain qui centralise.
+- id: perennite_habitat
+  nom: Pérennité d'habitat
+  famille: l-usage
+  famille_nom: L'usage
+  ordre: 5
+  desc: Droit d'usage stable, délié de la rentabilité de l'activité ; si l'activité cesse, l'usager garde un droit (notamment sur l'habitat).
+- id: usage_non_locatif
+  nom: Usage non-locatif
+  famille: l-usage
+  famille_nom: L'usage
+  ordre: 6
+  desc: L'usage n'est pas conditionné à un loyer-rente marchand (redevance symbolique admise ; fermage marchand non).
+- id: activite_libre
+  nom: Liberté du modèle d'activité
+  famille: l-usage
+  famille_nom: L'usage
+  ordre: 7
+  desc: Pas de logique de productivisme ou de rentabilité imposée par le montage.

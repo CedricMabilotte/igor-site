@@ -1,0 +1,23 @@
+# Les fonctions = portes d'entrée du site (CADRAGE-02, modules M1/M2/M3).
+# Une fonction pointe vers ses montages, ordonnés par nombre de facteurs libérés.
+- id: liberer-une-terre
+  nom: Libérer une terre
+  sous_titre: la sortir du marché, durablement
+  module: M1
+  statut: actif
+  problemes: [P-01, P-16]
+  montages: [liberer-une-terre]
+- id: securiser-une-gouvernance
+  nom: Sécuriser une gouvernance
+  sous_titre: se gouverner sans se faire reprendre
+  module: M2
+  statut: a-venir
+  problemes: [P-04, P-05, P-06]
+  montages: []
+- id: financer-sans-investisseur
+  nom: Financer sans investisseur
+  sous_titre: sans perdre la gouvernance
+  module: M3
+  statut: differe
+  problemes: [P-08, P-12]
+  montages: []

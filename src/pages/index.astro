@@ -1,92 +1,52 @@
 ---
 import Base from '../layouts/Base.astro';
-
-// Contenu d'illustration (mock) — la production de corpus réel est en pause.
-// Les cartes ci-dessous préfigurent la structure ; une seule analyse réelle existe
-// à ce jour (Plan B), le reste est mock.
-const corpusMock = [
-  {
-    type: 'Analyse juridique',
-    titre: 'Libérer une terre en propriété d’usage : fonds de dotation + association',
-    resume: 'Le modèle Plan B — sortir une terre du marché via un fonds de dotation qui tient la nue-propriété et une association d’intérêt général qui tient l’usage.',
-    meta: 'Loi LME 2008 · bail emphytéotique L451-1',
-    reel: true,
-  },
-  {
-    type: 'Analyse juridique',
-    titre: 'Sécuriser un foncier agricole collectif : la voie GFA',
-    resume: 'Le Groupement Foncier Agricole pour rendre une terre non-sécable — figer le sol d’abord, le reste suit.',
-    meta: 'Code rural L322-1 · précédent Longo Maï 1973',
-    reel: true,
-  },
-  {
-    type: 'Cas d’étude',
-    titre: 'La Commune de Paris comme laboratoire juridique',
-    resume: 'Soixante-douze jours de décrets : réquisition d’ateliers, moratoire sur les loyers, mandat impératif révocable.',
-    meta: 'mock — à produire',
-    reel: false,
-  },
-  {
-    type: 'Tactique',
-    titre: 'Organiser un cercle de gouvernance horizontale à trois',
-    resume: 'Protocole d’action séquencé, faisable en trente jours sans avocat.',
-    meta: 'mock — à produire',
-    reel: false,
-  },
-];
+import { getCollection } from 'astro:content';
+const ordre = { actif: 0, 'a-venir': 1, differe: 2 } as Record<string, number>;
+const libelleStatut = { actif: '3 montages · 1 exemplaire', 'a-venir': 'à venir', differe: 'différé' } as Record<string, string>;
+const fonctions = (await getCollection('fonctions')).sort(
+  (a, b) => (ordre[a.data.statut] ?? 9) - (ordre[b.data.statut] ?? 9)
+);
 ---
 <Base>
   <section class="bandeau">
     <div class="enveloppe">
-      <h1 class="accroche-grande">Refaire culture<br />en <em>Communs</em>.</h1>
+      <h1 class="accroche-grande">Le droit contient déjà les outils pour <em>sortir un bien du marché</em>.</h1>
       <p class="chapo">
-        La « pensée unique » contemporaine a été construite pour faire croire que
-        l'accumulation privée des terres et des ressources est inévitable.
-        Ce n'est pas vrai. Le droit civil, la mémoire des luttes et les dispositifs
-        coopératifs contiennent assez d'interstices pour permettre une économie
-        citoyenne réelle — si l'on sait où chercher.
+        Ce site vous apprend à les <strong>nommer</strong>, à les <strong>assembler</strong>,
+        et à vous faire accompagner pour les mettre en place. Pas de modèle sans outil,
+        pas d'outil sans précédent.
       </p>
     </div>
   </section>
-
   <main class="contenu">
     <div class="enveloppe">
-      <p class="mock">
-        <strong>Site en construction.</strong> Le corpus réel est en cours de
-        constitution ; les fiches marquées « mock » sont des emplacements
-        d'illustration. Deux analyses sont déjà documentées.
-      </p>
-
-      <h2>Le corpus</h2>
-      <p class="colonne-texte attenue">
-        Pour chaque question qu'un collectif se pose en s'organisant, une réponse
-        juridique opérationnelle, ancrée dans un précédent documenté. Pas de
-        modèle sans outil. Pas d'outil sans précédent.
-      </p>
-
-      <div class="grille-cartes">
-        {corpusMock.map((c) => (
-          <article class="carte">
-            <span class="etiquette">{c.type}</span>
-            <h3>{c.titre}</h3>
-            <p>{c.resume}</p>
-            <div class="meta">{c.reel ? c.meta : '⌁ ' + c.meta}</div>
-          </article>
-        ))}
+      <p class="sur-titre">Qu'est-ce qui vous amène ?</p>
+      <div class="fonctions-grille">
+        {fonctions.map((f) => {
+          const actif = f.data.statut === 'actif';
+          const Tag = actif ? 'a' : 'div';
+          return (
+            <Tag class={`fonction-carte${actif ? '' : ' inactive'}`} href={actif ? `/modeles/fonctions/${f.id}` : undefined}>
+              <span class="module">{f.data.module}</span>
+              <span class="titre-fonction">{f.data.nom}</span>
+              <span class="sous">{f.data.sous_titre}</span>
+              <span class="etat">{libelleStatut[f.data.statut]}</span>
+            </Tag>
+          );
+        })}
       </div>
 
       <hr />
 
       <div class="colonne-texte">
-        <h2>Trois manières de lire</h2>
+        <h2>Ce que ce site fait que les autres ne font pas</h2>
         <p>
-          Le corpus s'adresse à trois lecteurs à la fois. Aux <strong>activistes
-          et organisateurs</strong>, il dit ce qui est faisable cette semaine,
-          sans avocat ni budget. Au <strong>grand public engagé</strong>, il
-          rend les dispositifs accessibles sans condescendance. Aux
-          <strong>professionnels</strong> — juristes, élus, militants
-          expérimentés — il donne des références vérifiables : chaque article
-          de loi citable, chaque mouvement historique sourcé.
+          Il ne porte pas de terre et n'opère pas de commun — pour cela, voir les
+          acteurs qui le font, qu'il documente comme précédents. Il ne donne pas la
+          loi en catalogue : il <strong>nomme ce que vous faites déjà</strong> pour le
+          rendre opposable. Et il <strong>trie</strong> — tous les dispositifs ne
+          libèrent pas également : il dit lesquels <em>retirent</em> le bien du marché
+          et lesquels se contentent de <em>plafonner</em> le gain.
         </p>
       </div>
     </div>

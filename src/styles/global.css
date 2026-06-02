@@ -1,5 +1,5 @@
-/* Charte Igor v2 — moderne, dynamique, nature.
-   Source : resources/shared/identites/identite-igor.yaml */
+/* Charte projetplanb — emblème if + charte définitive à arbitrer @graphiste. Palette nature (vert/terre).
+   Source : resources/shared/identites/identite-eozen.yaml (à créer @graphiste) */
 
 :root {
   --fond: #F5F7F2;
@@ -184,3 +184,107 @@ hr { border: none; border-top: 1px solid var(--trait); margin: 2.75rem 0; }
 
 ul { padding-left: 1.2rem; }
 li { margin: 0.3rem 0; }
+
+/* ── Accueil — entrée par fonction (CADRAGE-05 §II) ───────────────────── */
+.sur-titre {
+  font-family: var(--ui);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--texte-attenue);
+  margin: 2.5rem 0 1rem;
+}
+.fonctions-grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+.fonction-carte {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: var(--fond-carte);
+  border: 1px solid var(--trait);
+  border-left: 4px solid var(--vert);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  text-decoration: none;
+  color: var(--texte);
+  transition: border-color 0.15s, transform 0.15s;
+}
+a.fonction-carte:hover { border-color: var(--vert); transform: translateY(-2px); }
+.fonction-carte.inactive { border-left-color: #C9CFC2; opacity: 0.78; }
+.fonction-carte .module {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--vert);
+  letter-spacing: 0.05em;
+}
+.fonction-carte.inactive .module { color: var(--texte-attenue); }
+.fonction-carte .titre-fonction {
+  font-family: var(--titre);
+  font-weight: 700;
+  font-size: 1.22rem;
+  letter-spacing: -0.01em;
+}
+.fonction-carte .sous { color: var(--texte-attenue); font-size: 0.96rem; }
+.fonction-carte .etat {
+  font-family: var(--ui);
+  font-size: 0.78rem;
+  color: var(--vert-profond);
+  margin-top: 0.5rem;
+}
+.fonction-carte.inactive .etat { color: var(--texte-attenue); }
+
+/* ── Fiche-montage (CADRAGE-05 §II, gabarit cartographe) ──────────────── */
+.colonne-large { max-width: var(--largeur-large); }
+.titre-montage { font-size: 2.1rem; margin-top: 0.3rem; }
+
+/* Profil 7 facteurs */
+.profil { margin: 0.5rem 0 1rem; }
+.profil-tete { display: flex; align-items: baseline; gap: 0.8rem; margin-bottom: 0.8rem; }
+.profil-degre {
+  font-family: var(--ui); font-weight: 700; font-size: 1.05rem;
+  color: var(--vert-profond); background: #EAF3DE; border: 1px solid #C0DD97;
+  border-radius: 999px; padding: 0.2rem 0.85rem;
+}
+.profil-score { font-family: var(--ui); font-size: 0.9rem; color: var(--texte-attenue); }
+.profil-familles { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem; }
+.profil-famille-nom {
+  font-family: var(--ui); font-size: 0.78rem; letter-spacing: 0.04em;
+  color: var(--texte-attenue); margin-bottom: 0.5rem;
+}
+.profil-ligne { display: flex; align-items: center; gap: 0.6rem; font-family: var(--ui); font-size: 0.95rem; padding: 0.18rem 0; }
+.pastille { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.profil-barres { display: flex; gap: 3px; }
+.profil-barres .barre { flex: 1; height: 7px; border-radius: 3px; }
+.profil.compact .profil-tete { margin-bottom: 0.5rem; }
+.profil.compact .profil-degre { font-size: 0.85rem; padding: 0.1rem 0.6rem; }
+
+/* Schéma à deux étages */
+.schema { max-width: 40rem; margin: 1rem 0 0.5rem; }
+.etage { border: 1px solid var(--trait); border-radius: 10px; padding: 0.7rem 1rem; }
+.etage-couche { font-family: var(--ui); font-size: 0.78rem; font-weight: 600; }
+.etage-brique { font-family: var(--corps); margin-top: 0.15rem; }
+.etage-brique .role { color: var(--texte-attenue); font-size: 0.9em; }
+.etage-source { font-family: var(--mono); font-size: 0.74rem; color: var(--texte-attenue); margin-top: 0.2rem; }
+.etage-portage-ig { border-color: #C0DD97; background: #EAF3DE; }
+.etage-portage-ig .etage-couche { color: #27500A; }
+.etage-usage { background: var(--fond); }
+.lien { text-align: center; font-family: var(--ui); font-size: 0.82rem; color: var(--texte-attenue); padding: 0.35rem 0; }
+.etage.fantome { border-style: dashed; background: #FAEEDA; border-color: #E2C99A; margin-top: 0.55rem; }
+.etage.fantome .etage-couche { color: #633806; }
+
+.soudures, .variantes { max-width: 42rem; }
+.soudures li, .variantes li { margin-bottom: 0.5rem; }
+
+/* Précédents — preuve et pseudo-libération */
+.precedents-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; max-width: 44rem; }
+.precedent { border: 1px solid var(--trait); border-radius: 12px; padding: 1rem 1.15rem; background: var(--fond-carte); }
+.precedent.pseudo { background: var(--fond); }
+.precedent-tete { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.6rem; }
+.precedent-nom { font-family: var(--ui); font-weight: 700; }
+.badge { font-family: var(--ui); font-size: 0.72rem; padding: 0.15rem 0.6rem; border-radius: 999px; }
+.badge.preuve { background: #EAF3DE; color: #27500A; }
+.badge.pseudo-liberation { background: #F1EFE8; color: #5F5E5A; }
+.precedent-extrait { font-size: 0.92rem; color: var(--texte-attenue); margin: 0.5rem 0 0; }
+.angle-court { font-family: var(--corps); font-style: italic; font-size: 1.2rem; color: var(--vert-profond); border-left: 3px solid var(--vert); padding-left: 1rem; margin: 2.5rem 0 1rem; max-width: 36rem; }

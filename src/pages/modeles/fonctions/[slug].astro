@@ -1,0 +1,35 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import ProfilFacteurs from '../../../components/ProfilFacteurs.astro';
+export async function getStaticPaths() {
+  const fonctions = await getCollection('fonctions');
+  return fonctions.map((f) => ({ params: { slug: f.id }, props: { f } }));
+}
+const { f } = Astro.props;
+const d = f.data;
+const montages = await Promise.all((d.montages ?? []).map((slug: string) => getEntry('montages', slug)));
+---
+<Base titre={`${d.nom} — Projet Plan B`} description={d.sous_titre}>
+  <section class="bandeau">
+    <div class="enveloppe">
+      <p class="sur-titre">fonction · {d.module}</p>
+      <h1 class="accroche-grande">{d.nom}</h1>
+      <p class="chapo">{d.sous_titre}. Voici les montages qui la réalisent, ordonnés par nombre de facteurs libérés.</p>
+    </div>
+  </section>
+  <main class="contenu">
+    <div class="enveloppe colonne-large">
+      {montages.length === 0 && <p class="mock">Montages à documenter.</p>}
+      <div class="fonctions-grille">
+        {montages.filter(Boolean).map((m: any) => (
+          <a class="fonction-carte" href={`/modeles/montages/${m.id}`}>
+            <span class="titre-fonction">{m.data.title}</span>
+            <span class="sous">{m.data.extrait}</span>
+            <ProfilFacteurs vecteur={m.data.facteurs_liberation} compact={true} />
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+</Base>

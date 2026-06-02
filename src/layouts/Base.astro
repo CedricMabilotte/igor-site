@@ -8,20 +8,19 @@ import '@fontsource/source-serif-4/400.css';
 import '@fontsource/source-serif-4/600.css';
 import '@fontsource/ibm-plex-mono/400.css';
 import '../styles/global.css';
-
-const { titre = 'Igor, le cosaque du kolkhoze — Refaire culture en Communs', description = "Igor cartographie le droit civil des Communs : dispositifs juridiques reproductibles, précédents documentés, mémoire des luttes. Il anime le Projet Plan B et d'autres modèles de Communs." } = Astro.props;
-
-// Menu sur les pages existantes. L'arborescence cible (Problèmes / Dispositifs /
-// Précédents / Carte) est proposée dans la bulle « structure-site-projetplanb »
-// — à implémenter par @neo dans une phase ultérieure.
+const {
+  titre = 'Projet Plan B — Refaire culture en Communs',
+  description = "Le droit contient déjà les outils pour sortir un bien du marché. Projet Plan B cartographie les montages juridiques de décommodification, les dispositifs et les précédents — et oriente vers l'accompagnement pour les mettre en place.",
+} = Astro.props;
 const menu = [
-  { href: '/corpus', texte: 'Corpus' },
-  { href: '/methode', texte: 'Méthode' },
-  { href: '/a-propos', texte: 'À propos' },
+  { href: '/agir', texte: 'Agir' },
+  { href: '/modeles', texte: 'Modèles' },
+  { href: '/ils-l-ont-fait', texte: "Ils l'ont fait" },
+  { href: '/comprendre', texte: 'Comprendre' },
 ];
-
-// « La pousse tressée » — deux feuilles s'ouvrent d'une tige tressée, racinée.
-const mark = `<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50,47 C45,46 33,45 24,16 C30,28 41,39 51,46 Z" fill="#2E7D4E"/><path d="M48,45 C40,38 32,30 27,20" fill="none" stroke="#F5F7F2" stroke-width="2.4" stroke-linecap="round" opacity="0.6"/><path d="M50,47 C55,46 67,45 76,16 C70,28 59,39 49,46 Z" fill="#E2622E"/><path d="M52,45 C60,38 68,30 73,20" fill="none" stroke="#F5F7F2" stroke-width="2.4" stroke-linecap="round" opacity="0.6"/><g fill="none" stroke-width="7" stroke-linecap="round"><path d="M50,47 C44,51 44,55 50,58 C56,61 56,68 50,73 C45,76 46,80 50,84" stroke="#2E7D4E"/><path d="M50,47 C56,51 56,55 50,58 C44,61 44,68 50,73 C55,76 54,80 50,84" stroke="#E2622E"/><path d="M45.5,55.5 C47,56.6 48.5,57.4 50,58 C52,59 54,60 55.6,61.4" stroke="#2E7D4E"/></g><g fill="none" stroke="#2E7D4E" stroke-width="3.4" stroke-linecap="round"><path d="M50,84 C46,87 43,89 39,93"/><path d="M50,84 C50,88 50,90 50,95"/><path d="M50,84 C54,87 57,89 61,93"/></g></svg>`;
+// Emblème provisoire — rameau d'if (longévif, sempervirent, arbre des seuils).
+// Charte définitive et emblème à arbitrer avec @graphiste.
+const mark = `<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50,92 L50,30" fill="none" stroke="#1C4A32" stroke-width="3.2" stroke-linecap="round"/><g stroke="#2E7D4E" stroke-width="2.4" stroke-linecap="round" fill="none"><path d="M50,40 C42,36 36,31 33,24"/><path d="M50,40 C58,36 64,31 67,24"/><path d="M50,52 C41,49 34,44 30,36"/><path d="M50,52 C59,49 66,44 70,36"/><path d="M50,64 C42,62 36,58 32,51"/><path d="M50,64 C58,62 64,58 68,51"/></g><circle cx="50" cy="26" r="3.2" fill="#E2622E"/></svg>`;
 ---
 <!doctype html>
 <html lang="fr">
@@ -38,7 +37,7 @@ const mark = `<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50,47 C45,
         <a class="marque" href="/">
           <Fragment set:html={mark} />
           <span>
-            <span class="nom">Igor, le cosaque du kolkhoze</span><br />
+            <span class="nom">Projet Plan B</span><br />
             <span class="accroche">Refaire culture en Communs</span>
           </span>
         </a>
@@ -47,25 +46,24 @@ const mark = `<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50,47 C45,
         </nav>
       </div>
     </header>
-
     <slot />
-
     <footer class="site-pied">
       <div class="enveloppe">
         <a class="marque" href="/">
           <Fragment set:html={mark} />
           <span>
-            <span class="nom">Igor, le cosaque du kolkhoze</span><br />
+            <span class="nom">Projet Plan B</span><br />
             <span class="accroche">Refaire culture en Communs</span>
           </span>
         </a>
         <p style="margin-top:1.25rem;max-width:42rem;">
-          Igor cartographie le droit civil des Communs — dispositifs reproductibles,
-          précédents documentés, mémoire des luttes. Il anime le Projet Plan B et
-          d'autres modèles de Communs. Fait avant principe, outil avant modèle.
+          Le droit contient déjà les outils pour sortir un bien du marché. Ce site
+          apprend à les nommer, à les assembler, et oriente vers l'accompagnement
+          pour les mettre en place. Information juridique générale, jamais conseil
+          personnalisé.
         </p>
         <p class="mono" style="font-size:0.78rem;opacity:0.65;">
-          projetplanb.org — corpus en construction — contenu d'illustration
+          projetplanb.org — site en construction
         </p>
       </div>
     </footer>
