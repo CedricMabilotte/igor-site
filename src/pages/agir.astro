@@ -18,7 +18,7 @@ const fonctions = (await getCollection('fonctions')).sort((a,b)=>(ordre[a.data.s
           <span class="module">{f.data.module}</span>
           <span class="titre-fonction">{f.data.nom}</span>
           <span class="sous">{f.data.sous_titre}</span>
-          <span class="etat">{lib[f.data.statut]}</span>
+          <span class="etat">{f.data.brouillon ? 'brouillon' : lib[f.data.statut]}</span>
         </T>);})}
     </div>
   </div></main>

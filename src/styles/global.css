@@ -313,3 +313,12 @@ a.fonction-carte:hover { border-color: var(--vert); transform: translateY(-2px);
 .fiche-table td:first-child { color: var(--texte-attenue); padding-right: 1.5rem; white-space: nowrap; }
 .source-loi { font-size: 0.82rem; color: var(--texte-attenue); margin-top: -0.4rem; }
 .corps-md { max-width: 42rem; margin: 1rem 0; }
+
+/* ── Brouillon ────────────────────────────────────────────────────────── */
+.fonction-carte.brouillon { border-left-color: #BA7517; }
+.fonction-carte.brouillon .etat { color: #854F0B; }
+.bandeau-brouillon {
+  background: #FAEEDA; border: 1px solid #E2C99A; color: #633806;
+  border-radius: 10px; padding: 0.7rem 1rem; font-family: var(--ui); font-size: 0.9rem;
+  max-width: 42rem; margin: 0.5rem 0 1rem;
+}

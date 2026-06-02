@@ -91,6 +91,7 @@ const montages = defineCollection({
     variantes: z.array(z.string()).default([]),
     precedents: z.array(reference('precedents')).default([]),
     angle_court: z.string().optional(),
+    brouillon: z.boolean().default(false),
   }),
 });
 
@@ -156,6 +157,7 @@ const fonctions = defineCollection({
     statut: z.enum(['actif', 'a-venir', 'differe']),
     problemes: z.array(z.string()).default([]),
     montages: z.array(z.string()).default([]),
+    brouillon: z.boolean().default(false),
   }),
 });
 

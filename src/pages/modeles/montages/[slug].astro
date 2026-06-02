@@ -26,6 +26,7 @@ const roleNom: Record<string, string> = { porter: 'porte', gouverner: 'gouverne'
     <div class="enveloppe colonne-large">
       <p class="sur-titre">modèles · montage</p>
       <h1 class="titre-montage">{d.title}</h1>
+      {d.brouillon && <p class="bandeau-brouillon">Brouillon — montage mocké pour montrer la structure, à éprouver. La grille des 7 facteurs (conçue pour le foncier) s'y étend de façon provisoire.</p>}
       <p class="chapo">{d.extrait}</p>
 
       <h2>Profil de libération</h2>

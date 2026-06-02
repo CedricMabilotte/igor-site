@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 const ordre = { actif: 0, 'a-venir': 1, differe: 2 } as Record<string, number>;
-const libelleStatut = { actif: '3 montages · 1 exemplaire', 'a-venir': 'à venir', differe: 'différé' } as Record<string, string>;
+const libelleStatut = { actif: 'disponible', 'a-venir': 'à venir', differe: 'différé' } as Record<string, string>;
 const fonctions = (await getCollection('fonctions')).sort(
   (a, b) => (ordre[a.data.statut] ?? 9) - (ordre[b.data.statut] ?? 9)
 );
@@ -24,13 +24,14 @@ const fonctions = (await getCollection('fonctions')).sort(
       <div class="fonctions-grille">
         {fonctions.map((f) => {
           const actif = f.data.statut === 'actif';
+          const cls = `fonction-carte${actif ? '' : ' inactive'}${f.data.brouillon ? ' brouillon' : ''}`;
           const Tag = actif ? 'a' : 'div';
           return (
-            <Tag class={`fonction-carte${actif ? '' : ' inactive'}`} href={actif ? `/modeles/fonctions/${f.id}` : undefined}>
+            <Tag class={cls} href={actif ? `/modeles/fonctions/${f.id}` : undefined}>
               <span class="module">{f.data.module}</span>
               <span class="titre-fonction">{f.data.nom}</span>
               <span class="sous">{f.data.sous_titre}</span>
-              <span class="etat">{libelleStatut[f.data.statut]}</span>
+              <span class="etat">{f.data.brouillon ? 'brouillon' : libelleStatut[f.data.statut]}</span>
             </Tag>
           );
         })}
