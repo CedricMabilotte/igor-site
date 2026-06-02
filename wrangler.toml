@@ -1,0 +1,5 @@
+# Cloudflare Pages — site statique Astro (sortie ./dist).
+# Build : `npm run build` · sortie : dist · Node 22.
+name = "projetplanb"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-09-01"
